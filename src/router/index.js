@@ -9,7 +9,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'LeftLink',
+      name: 'LeftLink.html',
       component: LeftLink
     }
   ]

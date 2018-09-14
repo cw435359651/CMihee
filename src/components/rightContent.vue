@@ -1,12 +1,10 @@
 <template>
-  <div id="header" ref="header">
-      <div class="userName">{{ userName }}</div>
-  </div>
+  <div id="conteneBox" ref="conteneBox"></div>
 </template>
 
 <script>
 export default {
-  name: 'Header',
+  name: 'rightContent',
   props: ['screenWidth'],
   data () {
     return {
@@ -19,9 +17,9 @@ export default {
   methods: {
     init () {
       if (this.screenWidth < 1100) {
-        this.$refs.header.style.paddingLeft = '0px'
+        this.$refs.conteneBox.style.paddingLeft = '0px'
       } else {
-        this.$refs.header.style.paddingLeft = '240px'
+        this.$refs.conteneBox.style.paddingLeft = '240px'
       }
     }
   },
@@ -35,19 +33,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    #header{
+    #conteneBox{
+        box-sizing: border-box;
         width: 100%;
-        height: 60px;
-        background: #4e6cf0;
-        position: fixed;
+        padding-left: 240px;
+        height: 100%;
+        background: #fafafa;
+        position: relative;
         left: 0;
         top: 0;
-        z-index: 2;
-        color: #fff;
+        color: #333;
         transition: .3s ease;
-        overflow: hidden;
-        opacity: 1;
-        padding-left: 240px;
-        box-sizing: border-box;
     }
 </style>

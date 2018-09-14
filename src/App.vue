@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <LeftLink />
-    <Header />
+    <LeftLink :screenWidth="screenWidth" />
+    <Header :screenWidth="screenWidth" />
+    <RightContent :screenWidth="screenWidth" />
     <!-- <router-view/> -->
   </div>
 </template>
@@ -9,11 +10,24 @@
 <script>
 import LeftLink from '@/components/leftLink'
 import Header from '@/components/header'
+import RightContent from '@/components/rightContent'
 export default {
   name: 'App',
   components: {
     LeftLink: LeftLink,
-    Header: Header
+    Header: Header,
+    RightContent: RightContent
+  },
+  data () {
+    return {
+      screenWidth: document.body.clientWidth
+    }
+  },
+  mounted () {
+    const that = this
+    window.onresize = () => {
+      that.screenWidth = document.body.clientWidth
+    }
   }
 }
 </script>
