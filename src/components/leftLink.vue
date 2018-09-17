@@ -5,13 +5,10 @@
     </div>
     <div class="itemBox" ref="scrollWap">
       <ul class="list">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li v-for="(val,key) in linkArr" :key="key" :title="val.title">
+          <i class="iconfont" :class="val.icon"></i>
+          <span>{{ val.name }}</span>
+        </li>
       </ul>
     </div>
     <div class="footer"></div>
@@ -26,7 +23,14 @@ export default {
   props: ['screenWidth'],
   data () {
     return {
-      userName: 'CMihee'
+      userName: 'CMihee',
+      linkArr: [
+        {icon: 'icon-wenzhang2', name: 'Blog', title: '博客'},
+        {icon: 'icon-biaoqian', name: 'Mark', title: '标签'},
+        {icon: 'icon-pachong-', name: 'Road', title: '爬坑之路'},
+        {icon: 'icon-github', name: 'Github', title: 'github'},
+        {icon: 'icon-liuyan', name: 'BBS', title: '留言'}
+      ]
     }
   },
   mounted () {
@@ -105,8 +109,25 @@ export default {
   .list li:hover{
     background: #ddd;
   }
+  .list li:hover i{
+    transition: .3s ease;
+    transform: rotateY(180deg);
+  }
   .list li:active{
     background: #ccc;
+  }
+  .list li i{
+    display: block;
+    width: 15%;
+    text-align: center;
+    float: left;
+    font-size: 22px;
+    transition: 1s ease;
+  }
+  .list li span{
+    display: block;
+    float: left;
+    padding-left: 12px;
   }
   .footer{
     width: 100%;

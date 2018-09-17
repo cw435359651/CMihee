@@ -1,6 +1,7 @@
 <template>
   <div id="header" ref="header">
-      <div class="userName">{{ userName }}</div>
+      <div class="icon iconfont  icon-923caidan_SCMliucheng" @click="hideShowLeft" title="菜单"></div>
+      <div class="userName" :title= "userName">{{ userName }}</div>
   </div>
 </template>
 
@@ -23,6 +24,9 @@ export default {
       } else {
         this.$refs.header.style.paddingLeft = '240px'
       }
+    },
+    hideShowLeft () {
+      alert(1)
     }
   },
   watch: {
@@ -49,5 +53,27 @@ export default {
         opacity: 1;
         padding-left: 240px;
         box-sizing: border-box;
+    }
+    .icon{
+      height: 60px;
+      width: 60px;
+      border-radius: 60px;
+      line-height: 60px;
+      text-align: center;
+      color: #fff;
+      float: left;
+      cursor: pointer;
+      font-size: 24px;
+      transition: 0.3s ease;
+    }
+    .icon:hover{
+      transform: rotate(180deg);
+      /* transform: rotateY(180deg) */
+    }
+    .userName{
+      height: 60px;
+      line-height: 60px;
+      font-weight: 400;
+      font-size: 24px;
     }
 </style>
