@@ -1,7 +1,9 @@
 <template>
   <div id="header" ref="header">
       <div class="icon iconfont  icon-923caidan_SCMliucheng" @click="hideShowLeft" title="菜单"></div>
-      <div class="userName" :title= "userName">{{ userName }}</div>
+      <div class="userNameBox">
+        <div class="userName" :title= "userName">{{ userName }}</div>
+      </div>
   </div>
 </template>
 
@@ -54,6 +56,11 @@ export default {
         padding-left: 240px;
         box-sizing: border-box;
     }
+    #header:after{
+      content: "";
+      display: block;
+      clear: both;
+    }
     .icon{
       height: 60px;
       width: 60px;
@@ -61,14 +68,22 @@ export default {
       line-height: 60px;
       text-align: center;
       color: #fff;
-      float: left;
       cursor: pointer;
       font-size: 24px;
       transition: 0.3s ease;
+      float: left;
     }
     .icon:hover{
       transform: rotate(180deg);
       /* transform: rotateY(180deg) */
+    }
+    .userNameBox{
+      position: relative;
+      height: 60px;
+      text-align: center;
+      z-index: -1;
+      top: 0;
+      left: 0;
     }
     .userName{
       height: 60px;
@@ -76,7 +91,7 @@ export default {
       font-weight: 400;
       font-size: 24px;
       position: absolute;
-      z-index: -1;
-      width: 100%;
+      left: 0;
+      right: 0;
     }
 </style>
