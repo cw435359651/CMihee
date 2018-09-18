@@ -75,5 +75,8 @@ export default {
       line-height: 60px;
       font-weight: 400;
       font-size: 24px;
+      position: absolute;
+      z-index: -1;
+      width: 100%;
     }
 </style>
