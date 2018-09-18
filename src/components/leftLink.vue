@@ -4,12 +4,12 @@
       <div class="userName">{{ userName }}</div>
     </div>
     <div class="itemBox" ref="scrollWap">
-      <ul class="list">
-        <li v-for="(val,key) in linkArr" :key="key" :title="val.title">
+      <div class="list">
+        <a class="item" :target="val.target" :href="val.href" v-for="(val,key) in linkArr" :key="key" :title="val.title">
           <i class="iconfont" :class="val.icon"></i>
           <span>{{ val.name }}</span>
-        </li>
-      </ul>
+        </a>
+      </div>
     </div>
     <div class="footer"></div>
   </div>
@@ -25,11 +25,11 @@ export default {
     return {
       userName: 'CMihee',
       linkArr: [
-        {icon: 'icon-wenzhang2', name: 'Blog', title: '博客'},
-        {icon: 'icon-biaoqian', name: 'Mark', title: '标签'},
-        {icon: 'icon-pachong-', name: 'Road', title: '爬坑之路'},
-        {icon: 'icon-github', name: 'Github', title: 'github'},
-        {icon: 'icon-liuyan', name: 'BBS', title: '留言'}
+        {icon: 'icon-wenzhang2', name: 'Blog', title: '博客', href: 'javascript:;'},
+        {icon: 'icon-biaoqian', name: 'Mark', title: '标签', href: 'javascript:;'},
+        {icon: 'icon-pachong-', name: 'Road', title: '爬坑之路', href: 'javascript:;'},
+        {icon: 'icon-github', name: 'Github', title: 'github', href: 'https://github.com/cw435359651', target: '_blanck'},
+        {icon: 'icon-liuyan', name: 'BBS', title: '留言', href: 'javascript:;'}
       ]
     }
   },
@@ -94,7 +94,8 @@ export default {
   .list{
     position: relative;
   }
-  .list li{
+  .list .item{
+    display: block;
     width: 100%;
     color: #333;
     height: 50px;
@@ -106,17 +107,17 @@ export default {
     cursor: pointer;
     transition: .3s ease;
   }
-  .list li:hover{
+  .list .item:hover{
     background: #ddd;
   }
-  .list li:hover i{
+  .list .item:hover i{
     transition: .3s ease;
     transform: rotateY(180deg);
   }
-  .list li:active{
+  .list .item:active{
     background: #ccc;
   }
-  .list li i{
+  .list .item i{
     display: block;
     width: 15%;
     text-align: center;
@@ -124,7 +125,7 @@ export default {
     font-size: 22px;
     transition: 1s ease;
   }
-  .list li span{
+  .list .item span{
     display: block;
     float: left;
     padding-left: 12px;
