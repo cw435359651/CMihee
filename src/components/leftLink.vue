@@ -5,10 +5,18 @@
     </div>
     <div class="itemBox" ref="scrollWap">
       <div class="list">
-        <a class="item" :target="val.target" :href="val.href" v-for="(val,key) in linkArr" :key="key" :title="val.title">
-          <i class="iconfont" :class="val.icon"></i>
-          <span>{{ val.name }}</span>
-        </a>
+        <div class="linkBox" v-for="(val,key) in linkArr" :key="key">
+          <router-link class="item" :to="val.href" tag="a" v-if="val.name != 'Github'" >
+             <i class="iconfont" :class="val.icon"></i>
+             <span>{{ val.name }}</span>
+          </router-link>
+
+          <a v-else class="item" :target="val.target" :href="val.href"   :title="val.title">
+            <i class="iconfont" :class="val.icon"></i>
+            <span>{{ val.name }}</span>
+          </a>
+
+        </div>
       </div>
     </div>
     <div class="footer"></div>
@@ -25,11 +33,11 @@ export default {
     return {
       userName: 'CMihee',
       linkArr: [
-        {icon: 'icon-wenzhang2', name: 'Blog', title: '博客', href: 'javascript:;'},
-        {icon: 'icon-biaoqian', name: 'Mark', title: '标签', href: 'javascript:;'},
-        {icon: 'icon-pachong-', name: 'Road', title: '爬坑之路', href: 'javascript:;'},
+        {icon: 'icon-wenzhang2', name: 'Blog', title: '博客', href: '/'},
+        {icon: 'icon-biaoqian', name: 'Mark', title: '标签', href: ''},
+        {icon: 'icon-pachong-', name: 'Road', title: '爬坑之路', href: ''},
         {icon: 'icon-github', name: 'Github', title: 'github', href: 'https://github.com/cw435359651', target: '_blanck'},
-        {icon: 'icon-liuyan', name: 'BBS', title: '留言', href: 'javascript:;'}
+        {icon: 'icon-liuyan', name: 'BBS', title: '留言', href: ''}
       ]
     }
   },
