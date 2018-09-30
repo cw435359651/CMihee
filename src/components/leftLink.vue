@@ -9,11 +9,13 @@
           <router-link class="item" :to="val.href" tag="a" v-if="val.name != 'Github'" >
              <i class="iconfont" :class="val.icon"></i>
              <span>{{ val.name }}</span>
+             <TouchRipple :center-ripple="false" />
           </router-link>
 
           <a v-else class="item" :target="val.target" :href="val.href"   :title="val.title">
             <i class="iconfont" :class="val.icon"></i>
             <span>{{ val.name }}</span>
+            <TouchRipple :center-ripple="false" />
           </a>
 
         </div>
@@ -25,9 +27,12 @@
 
 <script>
 import BScroll from 'better-scroll'
-
+import TouchRipple from '@/components/clickActive/TouchRipple'
 export default {
   name: 'leftLink',
+  components: {
+    TouchRipple: TouchRipple
+  },
   props: ['screenWidth'],
   data () {
     return {
@@ -103,6 +108,7 @@ export default {
     position: relative;
   }
   .list .item{
+    position: relative;
     display: block;
     width: 100%;
     color: #333;

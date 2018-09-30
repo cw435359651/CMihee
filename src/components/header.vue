@@ -1,6 +1,8 @@
 <template>
   <div id="header" ref="header">
-      <div class="icon iconfont  icon-923caidan_SCMliucheng" @click="hideShowLeft" title="菜单"></div>
+      <div class="icon iconfont  icon-923caidan_SCMliucheng" @click="hideShowLeft" title="菜单" >
+        <TouchRipple :center-ripple="true" />
+      </div>
       <div class="userNameBox">
         <div class="userName" :title= "userName">{{ userName }}</div>
       </div>
@@ -8,8 +10,12 @@
 </template>
 
 <script>
+import TouchRipple from '@/components/clickActive/TouchRipple'
 export default {
   name: 'Header',
+  components: {
+    TouchRipple: TouchRipple
+  },
   props: ['screenWidth'],
   data () {
     return {
@@ -72,6 +78,7 @@ export default {
       font-size: 24px;
       transition: 0.3s ease;
       float: left;
+      position: relative;
     }
     .icon:hover{
       transform: rotate(180deg);

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import LeftLink from '@/components/leftLink'
+// import LeftLink from '@/components/leftLink'
+import APP from '@/App'
 
 Vue.use(Router)
 
@@ -9,8 +10,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'LeftLink.html',
-      component: LeftLink
+      name: 'App',
+      component: APP
     }
   ]
 })
