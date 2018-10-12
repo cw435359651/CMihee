@@ -15,9 +15,9 @@
 /* eslint-disable*/
 import circleRipple from './circleRipple'
 export default {
-    components: {
-        'circle-ripple': circleRipple
-    },
+  components: {
+      'circle-ripple': circleRipple
+  },
   props: {
     // 是否从中间扩散，设为false会从点击处扩散
     centerRipple: {
@@ -149,9 +149,6 @@ export default {
             'margin-top': -max + y + 'px'
         }
     }
-  },
-  components: {
-    'circle-ripple': circleRipple
   }
 }
 </script>
