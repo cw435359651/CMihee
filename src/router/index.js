@@ -1,38 +1,26 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Index from '../views/Index.vue'
-import IntelligentDigitalTeaching from '../views/IntelligentDigitalTeaching.vue'
-import Cooperation from '../views/Cooperation.vue'
-import Empty from '../views/404.vue'
+import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Index',
-    component: Index
+    name: 'Home',
+    component: Home
   },
   {
-    path: '/intelligentDigitalTeaching',
-    name: 'IntelligentDigitalTeaching',
-    component: IntelligentDigitalTeaching
-  },
-  {
-    path: '/cooperation',
-    name: 'Cooperation',
-    component: Cooperation
-  },
-  {
-    path: '/404',
-    name: '404',
-    component: Empty
+    path: '/about',
+    name: 'About',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
   routes
 })
 
