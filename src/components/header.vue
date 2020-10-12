@@ -1,104 +1,108 @@
 <template>
-  <div id="header" ref="header">
-      <div class="icon iconfont  icon-923caidan_SCMliucheng" @click="hideShowLeft" title="菜单" >
-        <TouchRipple :center-ripple="true" />
-      </div>
-      <div class="userNameBox">
-        <div class="userName" :title= "userName">{{ userName }}</div>
-      </div>
+  <div class="header">
+    <div class="logo">
+      <a href="/">
+        <img src="../assets/img/index_logo.png"
+             alt="北京智慧流" />
+      </a>
+    </div>
+    <div class="menu">
+      <a href="/"
+         :class="getCur() == 'Index' ? 'cur':''">首页</a>
+      <a href="/intelligentDigitalTeaching"
+         :class="getCur() == 'IntelligentDigitalTeaching' ? 'cur':''">智能数字教辅</a>
+      <a href="/"
+         class="disabled">产品下载</a>
+      <a href="/cooperation"
+         :class="getCur() == 'Cooperation' ? 'cur':''">出版社合作</a>
+      <a href="/"
+         class="disabled">版飞跃数字出版云</a>
+      <a href="/"
+         class="disabled">教师服务</a>
+      <a href="/"
+         class="disabled">关于我们</a>
+    </div>
+    <div class="subMenu">
+      <span>|</span>
+      <a href="/"
+         class="disabled">教育公益</a>
+      <span>|</span>
+      <a href="/"
+         class="disabled">党建专栏</a>
+      <span>|</span>
+    </div>
   </div>
 </template>
-
 <script>
-import TouchRipple from '@/components/clickActive/TouchRipple'
 export default {
   name: 'Header',
-  components: {
-    TouchRipple: TouchRipple
-  },
-  props: ['screenWidth'],
-  data () {
+  data() {
     return {
-      userName: 'CMihee'
+
     }
   },
-  mounted () {
-    this.init()
+  created() {
   },
   methods: {
-    init () {
-      if (this.screenWidth < 1100) {
-        this.$refs.header.style.paddingLeft = '0px'
-      } else {
-        this.$refs.header.style.paddingLeft = '240px'
-      }
-    },
-    hideShowLeft () {
-      alert(1)
-    }
-  },
-  watch: {
-    screenWidth () {
-      this.init()
+    getCur() {
+      return this.$route.name
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-    #header{
-        width: 100%;
-        height: 60px;
-        background: #4e6cf0;
-        position: fixed;
-        left: 0;
-        top: 0;
-        z-index: 2;
-        color: #fff;
-        transition: .3s ease;
-        overflow: hidden;
-        opacity: 1;
-        padding-left: 240px;
-        box-sizing: border-box;
+<style lang="less" scoped>
+.header {
+  padding: 0 40px;
+  box-sizing: border-box;
+  height: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  .logo {
+    margin-top: -10px;
+    img {
+      height: 40px;
     }
-    #header:after{
-      content: "";
-      display: block;
-      clear: both;
-    }
-    .icon{
-      height: 60px;
-      width: 60px;
-      border-radius: 60px;
-      line-height: 60px;
-      text-align: center;
+  }
+  .menu {
+    margin-left: 50px;
+    flex: 1;
+    overflow: hidden;
+    a {
+      font-size: 16px;
       color: #fff;
-      cursor: pointer;
-      font-size: 24px;
-      transition: 0.3s ease;
-      float: left;
-      position: relative;
+      margin-right: 25px;
+      transition: transform 0.3s ease-in-out;
+      &:last-child {
+        margin-right: 0;
+      }
+      &.cur {
+        font-size: 18px;
+        font-weight: bold;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+      }
+      &:hover {
+        color: yellow;
+      }
     }
-    .icon:hover{
-      transform: rotate(180deg);
-      /* transform: rotateY(180deg) */
+  }
+  .subMenu {
+    color: #fff;
+    a {
+      font-size: 16px;
+      color: #fff;
+      padding: 0 10px;
+      &.cur {
+        font-weight: bold;
+      }
+      &:hover {
+        color: yellow;
+      }
     }
-    .userNameBox{
-      position: relative;
-      height: 60px;
-      text-align: center;
-      z-index: -1;
-      top: 0;
-      left: 0;
-    }
-    .userName{
-      height: 60px;
-      line-height: 60px;
-      font-weight: 400;
-      font-size: 24px;
-      position: absolute;
-      left: 0;
-      right: 0;
-    }
+  }
+  a.disabled {
+    opacity: 0.8 !important;
+    pointer-events: none;
+  }
+}
 </style>

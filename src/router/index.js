@@ -1,17 +1,39 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-// import LeftLink from '@/components/leftLink'
-import APP from '@/App'
+import VueRouter from 'vue-router'
+import Index from '../views/Index.vue'
+import IntelligentDigitalTeaching from '../views/IntelligentDigitalTeaching.vue'
+import Cooperation from '../views/Cooperation.vue'
+import Empty from '../views/404.vue'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+const routes = [
+  {
+    path: '/',
+    name: 'Index',
+    component: Index
+  },
+  {
+    path: '/intelligentDigitalTeaching',
+    name: 'IntelligentDigitalTeaching',
+    component: IntelligentDigitalTeaching
+  },
+  {
+    path: '/cooperation',
+    name: 'Cooperation',
+    component: Cooperation
+  },
+  {
+    path: '/404',
+    name: '404',
+    component: Empty
+  }
+]
+
+const router = new VueRouter({
   mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'App',
-      component: APP
-    }
-  ]
+  base: process.env.BASE_URL,
+  routes
 })
+
+export default router

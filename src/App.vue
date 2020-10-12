@@ -1,45 +1,61 @@
 <template>
   <div id="app">
-    <LeftLink :screenWidth="screenWidth" />
-    <Header :screenWidth="screenWidth" />
-    <RightContent :screenWidth="screenWidth" />
-    <!-- <router-view/> -->
+    <router-view />
   </div>
 </template>
-
 <script>
-import LeftLink from '@/components/leftLink'
-import Header from '@/components/header'
-import RightContent from '@/components/rightContent'
 export default {
-  name: 'App',
-  components: {
-    LeftLink: LeftLink,
-    Header: Header,
-    RightContent: RightContent
-  },
-  data () {
+  metaInfo() {
     return {
-      screenWidth: document.body.clientWidth
+      meta: this.metas
     }
   },
-  mounted () {
-    const that = this
-    window.onresize = () => {
-      that.screenWidth = document.body.clientWidth
+  data() {
+    return {
+      terminalType: 0, // 0 ios 1 安卓 2 pc
+      isWx: false,
+      metas: []
+    }
+  },
+  created() {
+    this.icoCreate(require('./assets/img/logoS.png'))
+    this.metas = [{
+      name: 'keyWords',
+      content: ''
+    }, {
+      name: 'description',
+      content: ''
+    }]
+  },
+  methods: {
+    icoCreate(icoUrl) {
+      var link = document.createElement('link')
+      link.type = 'image/x-icon'
+      link.rel = 'shortcut icon'
+      link.href = icoUrl
+      document.getElementsByTagName('head')[0].appendChild(link)
+    },
+    isWeixin() {
+      var ua = window.navigator.userAgent.toLowerCase()
+      if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        this.isWx = true
+      } else {
+        this.isWx = false
+      }
+    },
+    getTerminal() {
+      var ua = navigator.userAgent.toLowerCase()
+      if (/iphone|ipad|ipod|macintosh|mac os x/.test(ua)) {
+        this.terminalType = 0
+      } else if (/android/.test(ua)) {
+        this.terminalType = 1
+      } else {
+        this.terminalType = 2
+      }
     }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: "Microsoft YaHei";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
+<style lang="less">
+@import url('assets/css/reset.less');
 </style>
